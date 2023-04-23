@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Dashboard\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Laravel\Jetstream\Rules\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +35,11 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+
+Route::inertia('/indexconinertia', 'Dashboard/Post/Index');
+
+Route::get('/', [PostController::class, 'index']);
+
+Route::get('/', [App\Http\Controllers\Dashboard\PostController::class, 'index']);
+Route::resource('/category', App\Http\Controllers\Dashboard\CategoryController::class);

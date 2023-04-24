@@ -3,13 +3,16 @@ import { provide } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import CreateCategoryForm from "@/Pages/Dashboard/Category/Partials/CreateCategoryForm.vue";
 import EditCategoryForm from "@/Pages/Dashboard/Category/Partials/EditCategoryForm.vue";
+import ListCategories from "@/Pages/Dashboard/Category/Partials/ListCategories.vue";
 
 const props = defineProps({
     type_form: String,
     category: Object,
+    categories: Object,
 });
 
 provide("category", props.category);
+provide("categories", props.categories);
 </script>
 
 <template>
@@ -23,6 +26,13 @@ provide("category", props.category);
         </template>
 
         <div>
+            <div
+                v-if="props.type_form == 'list'"
+                class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
+            >
+                <ListCategories />
+            </div>
+
             <div
                 v-if="props.type_form == 'creation'"
                 class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"

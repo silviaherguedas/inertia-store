@@ -14,6 +14,15 @@ class Put extends FormRequest
         return true;
     }
 
+    public function prepareForValidation()
+    {
+        if (str($this->slug)->trim() == "") {
+            $this->merge([
+                'slug' => str($this->title)->slug()
+            ]);
+        }
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

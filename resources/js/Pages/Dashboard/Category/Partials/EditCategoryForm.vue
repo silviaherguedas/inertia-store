@@ -1,4 +1,5 @@
 <script setup>
+import { inject } from "vue";
 import { useForm } from "@inertiajs/vue3";
 
 import FormSection from "@/Components/FormSection.vue";
@@ -7,28 +8,28 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 
+const category = inject("category");
+
 const form = useForm({
-    title: null,
-    slug: null,
+    id: category.id,
+    title: category.title,
+    slug: category.slug,
 });
 
-const createCategory = () => {
-    form.post(route("category.store"), {
-        errorBag: "createCategory",
+const updateCategory = () => {
+    form.put(route("category.update", form.id), {
+        errorBag: "updateCategory",
         preserveScroll: true,
     });
 };
 </script>
-
 <template>
     <FormSection
-        @submitted="createCategory"
+        @submitted="updateCategory"
         class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
     >
-        <template #title> Create Category </template>
-        <template #description>
-            Add a new category to be able to associate it to an article.
-        </template>
+        <template #title> Edit Category </template>
+        <template #description> Edit a Category </template>
         <template #form>
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="title" value="Title" />
@@ -53,7 +54,7 @@ const createCategory = () => {
             </div>
         </template>
         <template #actions>
-            <PrimaryButton> Send </PrimaryButton>
+            <PrimaryButton>Send</PrimaryButton>
         </template>
     </FormSection>
 </template>

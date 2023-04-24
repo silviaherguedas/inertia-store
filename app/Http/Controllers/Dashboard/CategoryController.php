@@ -3,15 +3,24 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\Put;
 use App\Http\Requests\Category\Store;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+    public function index()
+    {
+        $categories = Category::paginate(2);
+        return inertia("Dashboard/Category/Index", compact("categories"));
+    }
+
     public function create()
     {
-        return inertia("Dashboard/Category/CreateForm");
+        $type_form  = "creation";
+        return inertia("Dashboard/Category/CategorySettings",compact('type_form'));
     }
 
     public function store(Store $request)
@@ -20,11 +29,12 @@ class CategoryController extends Controller
     }
     public function edit(Category $category)
     {
-        return inertia("Dashboard/Category/Edit", compact('category'));
+        $type_form  = "edition";
+        return inertia("Dashboard/Category/CategorySettings", compact('category', 'type_form'));
     }
 
-    public function update(Request $request, Category $category)
+    public function update(Put $request, Category $category)
     {
-        dd($request->all());
+        $category->update($request->validated());
     }
 }

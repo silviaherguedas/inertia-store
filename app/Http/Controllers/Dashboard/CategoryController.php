@@ -11,12 +11,11 @@ class CategoryController extends Controller
 {
     public function create()
     {
-        return inertia("Dashboard/Category/Create");
+        return inertia("Dashboard/Category/CreateForm");
     }
 
     public function store(Store $request)
     {
-        dd($request->all());
         Category::create($request->validated());
     }
     public function edit(Category $category)

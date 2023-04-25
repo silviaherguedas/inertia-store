@@ -10,32 +10,39 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    private $template = "Dashboard/Category/CategorySettings";
 
     public function index()
     {
         $type_form  = "list";
         $categories = Category::paginate(2);
-        return inertia("Dashboard/Category/CategorySettings", compact("categories", 'type_form'));
+        return inertia($this->template, compact("categories", 'type_form'));
     }
 
     public function create()
     {
         $type_form  = "creation";
-        return inertia("Dashboard/Category/CategorySettings",compact('type_form'));
+        return inertia($this->template,compact('type_form'));
     }
 
     public function store(Store $request)
     {
         Category::create($request->validated());
     }
+
     public function edit(Category $category)
     {
         $type_form  = "edition";
-        return inertia("Dashboard/Category/CategorySettings", compact('category', 'type_form'));
+        return inertia($this->template, compact('category', 'type_form'));
     }
 
     public function update(Put $request, Category $category)
     {
         $category->update($request->validated());
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
     }
 }

@@ -1,12 +1,12 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faPenFancy } from '@fortawesome/free-solid-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faPenFancy } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
-library.add(faPenFancy)
+library.add(faPenFancy);
 
 defineProps({
     href: String,

@@ -4,22 +4,16 @@ import { Link } from "@inertiajs/vue3";
 defineProps({
     links: Object,
 });
+
+const inactive =   "px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 ml-2";
+const active = "px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 hover:bg-gray-50 ml-2 text-white bg-cyan-700";
 </script>
 
 <template>
-    <div>
-        <template v-for="l in links.links" :key="l">
-            <Link v-if="!l.active" class="px-2 py-1" :href="l.url" v-html="l.label"/>
-            <span v-else class="px-2 py-1 cursor-pointer text-gray-500"  v-html="l.label"  />
+    <div class="mt-4 text-center">
+        <template v-for="link in links.links" :key="link">
+            <Link v-if="!link.active" :class="inactive" :href="link.url" v-html="link.label" />
+            <span v-else :class="active"  v-html="link.label" />
         </template>
-        <!--component
-            v-for="l in links.links"
-            :key="l"
-            :is="!l.active ? 'Link' : 'span'"
-            class="px-2 py-1"
-            :class="!l.active ? '' : 'text-gray-500 cursor-pointer'"
-            :href="l.url"
-            v-html="l.label"
-        /-->
     </div>
 </template>

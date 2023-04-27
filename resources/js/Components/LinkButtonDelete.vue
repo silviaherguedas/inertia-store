@@ -18,6 +18,7 @@ defineProps({
     <Link
         method="delete"
         as="button"
+        type="button"
         :href="href"
         class="px-4 py-2 font-semibold text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-800 ease-in-out delay-150 duration-300"
     >

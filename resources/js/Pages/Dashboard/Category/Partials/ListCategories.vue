@@ -11,7 +11,7 @@ const categories = inject("categories");
 <template>
     <LinkButtonCreate :href="route('category.create')" :value="'Create'" />
 
-    <TableList :items="categories" :colums="['id','title', 'slug', 'actions']"/>
+    <TableList :items="categories" :headers="['id', 'title', 'slug']" />
 
     <PaginationBar :links="categories" />
 </template>

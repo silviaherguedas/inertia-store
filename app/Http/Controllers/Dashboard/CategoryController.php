@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $type_form  = "list";
-        $categories = Category::paginate(2);
+        $categories = Category::paginate(10);
         return inertia($this->template, compact("categories", 'type_form'));
     }
 

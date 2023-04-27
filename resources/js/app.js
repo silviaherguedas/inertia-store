@@ -23,14 +23,12 @@ createInertiaApp({
             .mount(el);
     },
     progress: {
-        // color: "#4B5563",
+        // The color of the progress bar.
+        color: "#4B5563",
 
         // The delay after which the progress bar will
         // appear during navigation, in milliseconds.
         delay: 250,
-
-        // The color of the progress bar.
-        color: "#F00",
 
         // Whether to include the default NProgress styles.
         includeCSS: true,

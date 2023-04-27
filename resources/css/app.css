@@ -5,3 +5,8 @@
 [x-cloak] {
     display: none;
 }
+@layer components {
+    .card {
+        @apply pb-5 bg-white shadow rounded-md
+    }
+}

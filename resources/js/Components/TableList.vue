@@ -22,13 +22,13 @@ const capitalized = (string) => {
         <thead>
             <template v-for="(header, id) in headers" :key="header">
                 <th
-                    class="border-b dark:border-slate-600 font-medium p-4 pb-3 dark:text-slate-200 text-left"
+                    class="border-b dark:border-slate-600 font-medium p-3 dark:text-slate-200 text-left"
                     v-html="capitalized(header)"
-                    :class="id == 0 ? 'pl-8' : ''"
+                    :class="id == 0 ? 'pl-4' : ''"
                 />
             </template>
             <th
-                class="border-b dark:border-slate-600 font-medium p-4 pr-8 pb-3 dark:text-slate-200 text-left"
+                class="border-b dark:border-slate-600 font-medium p-3 dark:text-slate-200 text-left pr-8 "
             >
                 Actions
             </th>
@@ -37,22 +37,22 @@ const capitalized = (string) => {
             <tr v-for="item in items.data" :key="item.id">
                 <template v-for="(header, id) in headers" :key="header">
                     <td
-                        :class="id == 0 ? 'pl-8' : ''"
-                        class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400"
+                    class="border-b border-slate-100 dark:border-slate-700 p-3 text-slate-500 dark:text-slate-400"
+                    :class="id == 0 ? 'pl-4' : ''"
                     >
                         {{ item[header] }}
                     </td>
                 </template>
                 <td
-                    class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400"
+                    class="border-b border-slate-100 dark:border-slate-700 p-3 text-slate-500 dark:text-slate-400 pr-8"
                 >
                     <LinkButtonEdit
                         :href="route('category.edit', item.id)"
-                        :value="'Edit'"
+                        :value="''"
                     />
                     <LinkButtonDelete
                         :href="route('category.destroy', item.id)"
-                        :value="'Delete'"
+                        :value="''"
                     />
                 </td>
             </tr>

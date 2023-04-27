@@ -9,9 +9,12 @@ const categories = inject("categories");
 </script>
 
 <template>
-    <LinkButtonCreate :href="route('category.create')" :value="'Create'" />
+    <div class="container">
+        <LinkButtonCreate :href="route('category.create')" :value="'Create'" />
+        <div class="card">
+            <TableList :items="categories" :headers="['id', 'title', 'slug']" />
 
-    <TableList :items="categories" :headers="['id', 'title', 'slug']" />
-
-    <PaginationBar :links="categories" />
+            <PaginationBar :links="categories" />
+        </div>
+    </div>
 </template>
